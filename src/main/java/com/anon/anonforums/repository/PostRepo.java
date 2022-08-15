@@ -1,6 +1,6 @@
-package com.anon.anonforums.post.repository;
+package com.anon.anonforums.repository;
 
-import com.anon.anonforums.post.model.Post;
+import com.anon.anonforums.model.Post;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;

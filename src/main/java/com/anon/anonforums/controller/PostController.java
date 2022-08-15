@@ -1,8 +1,8 @@
-package com.anon.anonforums.post.controller;
+package com.anon.anonforums.controller;
 
-import com.anon.anonforums.post.model.Post;
-import com.anon.anonforums.post.services.PostService;
-import com.anon.anonforums.response.Response;
+import com.anon.anonforums.model.Post;
+import com.anon.anonforums.services.PostService;
+import com.anon.anonforums.model.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,4 +36,11 @@ public class PostController {
     public Post getPostById(@PathVariable("id") String id) {
         return this.postService.findPostById(id);
     }
+
+    @DeleteMapping(path="/{id}")
+    public Response deletePost(@PathVariable("id") String id, @RequestHeader(value = "Secret-Token") String secretToken) {
+        this.postService.deletePostById(id, secretToken);
+        return new Response(false, "Post Deleted", 200);
+    }
+
 }

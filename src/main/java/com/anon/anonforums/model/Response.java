@@ -1,9 +1,7 @@
-package com.anon.anonforums.response;
+package com.anon.anonforums.model;
 
-import com.anon.anonforums.post.model.Post;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.hibernate.type.AnyType;
 
 @Data
 @AllArgsConstructor

@@ -1,7 +1,7 @@
-package com.anon.anonforums.post.services;
+package com.anon.anonforums.services;
 
-import com.anon.anonforums.post.model.Post;
-import com.anon.anonforums.post.repository.PostRepo;
+import com.anon.anonforums.model.Post;
+import com.anon.anonforums.repository.PostRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,5 +36,14 @@ public class PostService {
         }
 
         return post;
+    }
+
+    public void deletePostById(String id, String secretToken) {
+        if(secretToken != System.getenv("SECRET_TOKEN")) {
+            throw new IllegalArgumentException("The Secret token provided is not correct");
+        }
+
+        Post post = findPostById(id);
+        this.postRepo.delete(post);
     }
 }
