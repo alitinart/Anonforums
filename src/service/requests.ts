@@ -21,6 +21,17 @@ export const requests = {
       });
       return data;
     },
+    addComment: async (
+      id: string,
+      { content, author }: { content: string; author: string }
+    ) => {
+      const { data } = await axios.post(`${API_URL}/posts/${id}/comment`, {
+        content,
+        author,
+      });
+
+      return data;
+    },
   },
   users: {
     getAllUsers: async () => {

@@ -11,7 +11,7 @@ export default function Home() {
   useEffect(() => {
     const fetchPosts = async () => {
       const res = await requests.posts.getAllPosts();
-      setPosts(res);
+      setPosts(res.reverse());
       setIsReqDone(true);
     };
 

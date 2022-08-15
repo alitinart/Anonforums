@@ -3,4 +3,5 @@ export default interface Post {
   title: string;
   description: string;
   author: string;
+  comments: { content: string; replies: []; author: string }[];
 }

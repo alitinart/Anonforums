@@ -11,7 +11,7 @@ import Home from "./components/routes/Home";
 import { requests } from "./service/requests";
 import PostView from "./components/routes/PostView";
 import CreatePostIcon from "./components/elements/CreatePostIcon";
-import Footer from "./components/layout/Footer";
+// import Footer from "./components/layout/Footer";
 
 export default function App() {
   useEffect(() => {
@@ -35,7 +35,7 @@ export default function App() {
         <Route path="/post/:id" element={<PostView />}></Route>
       </Routes>
       <CreatePostIcon />
-      <Footer />
+      {/* <Footer /> */}
     </BrowserRouter>
   );
 }

@@ -59,6 +59,7 @@ button:focus-visible {
   bottom: 3rem;
   right: 2rem;
   cursor: pointer;
+  position: fixed;
   border: 1px solid transparent;
   transition: border-color 0.25s;
 
@@ -157,6 +158,65 @@ button:focus-visible {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+.comments {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  background-color: $contrast-color;
+  border-radius: 3px;
+  padding: 10px;
+
+  &__title {
+    font-size: $font-medium;
+    margin-bottom: 1rem;
+  }
+
+  &__form {
+    display: flex;
+    &__box {
+      padding: 0 1rem;
+      width: 80%;
+      margin-right: 10px;
+    }
+    &__button {
+      width: 20%;
+    }
+    margin-bottom: 1rem;
+  }
+}
+
+.comment {
+  background-color: #101010;
+  padding: 1rem;
+  border-radius: 3px;
+  margin: 0.5rem 0;
+
+  &__content {
+    font-size: 20px;
+  }
+
+  &__author {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 661px) {
+  .comments {
+    &__form {
+      flex-direction: column;
+      &__box {
+        padding: 0.6em 1.2em;
+        margin-bottom: 10px;
+        width: 87%;
+      }
+
+      &__button {
+        width: 100%;
+      }
+    }
   }
 }
 

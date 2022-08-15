@@ -60,6 +60,7 @@ button:focus-visible {
   bottom: 3rem;
   right: 2rem;
   cursor: pointer;
+  position: fixed;
   border: 1px solid transparent;
   transition: border-color 0.25s;
 }
@@ -197,6 +198,57 @@ button:focus-visible {
     transform: rotate(360deg);
   }
 }
+.comments {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  background-color: #292626;
+  border-radius: 3px;
+  padding: 10px;
+}
+.comments__title {
+  font-size: 30px;
+  margin-bottom: 1rem;
+}
+.comments__form {
+  display: flex;
+  margin-bottom: 1rem;
+}
+.comments__form__box {
+  padding: 0 1rem;
+  width: 80%;
+  margin-right: 10px;
+}
+.comments__form__button {
+  width: 20%;
+}
+
+.comment {
+  background-color: #101010;
+  padding: 1rem;
+  border-radius: 3px;
+  margin: 0.5rem 0;
+}
+.comment__content {
+  font-size: 20px;
+}
+.comment__author {
+  font-size: 15px;
+}
+
+@media screen and (max-width: 661px) {
+  .comments__form {
+    flex-direction: column;
+  }
+  .comments__form__box {
+    padding: 0.6em 1.2em;
+    margin-bottom: 10px;
+    width: 87%;
+  }
+  .comments__form__button {
+    width: 100%;
+  }
+}
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -226,7 +278,7 @@ button:focus-visible {
   padding: 5rem;
 }
 .home__date {
-  font-size: 20px;
+  font-size: 25px;
   text-align: center;
   margin-bottom: 10px;
 }
@@ -249,7 +301,7 @@ button:focus-visible {
 }
 .create_post__form__control {
   padding: 5px 8px;
-  font-size: 20px;
+  font-size: 25px;
   margin-bottom: 10px;
   width: 100%;
 }
