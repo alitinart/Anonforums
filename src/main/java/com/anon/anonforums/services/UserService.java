@@ -2,6 +2,7 @@ package com.anon.anonforums.services;
 
 import com.anon.anonforums.model.User;
 import com.anon.anonforums.repository.UserRepo;
+import io.github.cdimascio.dotenv.Dotenv;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
@@ -104,11 +105,20 @@ public class UserService {
     }
 
     public void deleteUser(String id, String secretToken) {
-        if(!Objects.equals(secretToken, System.getenv("SECRET_TOKEN"))) {
+        Dotenv dotenv = Dotenv.load();
+
+        if(!Objects.equals(secretToken, dotenv.get("SECRET_TOKEN"))) {
             throw new IllegalArgumentException("The Secret token provided is not correct");
         }
 
         User user = this.userRepo.findUserById(id);
+
+        try {
+            user.getId();
+        } catch (Exception e) {
+            throw new IllegalArgumentException("No user with that ID");
+        }
+
         this.userRepo.delete(user);
     }
 }

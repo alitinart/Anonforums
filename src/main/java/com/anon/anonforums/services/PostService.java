@@ -2,6 +2,8 @@ package com.anon.anonforums.services;
 
 import com.anon.anonforums.model.Post;
 import com.anon.anonforums.repository.PostRepo;
+import io.github.cdimascio.dotenv.DotEnvException;
+import io.github.cdimascio.dotenv.Dotenv;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,11 +42,19 @@ public class PostService {
     }
 
     public void deletePostById(String id, String secretToken) {
-        if(!Objects.equals(secretToken, System.getenv("SECRET_TOKEN"))) {
+        Dotenv dotenv = Dotenv.load();
+        if(!Objects.equals(secretToken, dotenv.get("SECRET_TOKEN"))) {
             throw new IllegalArgumentException("The Secret token provided is not correct");
         }
 
         Post post = findPostById(id);
+
+        try {
+            post.getId();
+        } catch (Exception e) {
+            throw new IllegalArgumentException("No user with that ID");
+        }
+
         this.postRepo.delete(post);
     }
 }

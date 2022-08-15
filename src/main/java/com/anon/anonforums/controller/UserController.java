@@ -41,7 +41,8 @@ public class UserController {
     }
 
     @DeleteMapping(path="/{id}")
-    public Response deletePost(@PathVariable("id") String id, @RequestHeader(value = "Secret-Token") String secretToken) {
+        public Response deletePost(@PathVariable("id") String id, @RequestHeader(value = "Secret-Token") String secretToken) {
+        System.out.println(System.getenv("SECRET_TOKEN"));
         this.userService.deleteUser(id, secretToken);
         return new Response(false, "User Deleted", 200);
     }
