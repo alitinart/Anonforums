@@ -25,6 +25,10 @@ a:hover {
   padding: 0;
 }
 
+*:focus {
+  outline: none;
+}
+
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
