@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicReference;
 
 @Service
 public class UserService {
@@ -21,17 +22,6 @@ public class UserService {
         this.userRepo = userRepo;
     }
 
-    public User findUserByAddress(String address) {
-        User user = this.userRepo.findUserByAddress(address);
-
-        try {
-            user.getId();
-        } catch (Exception e) {
-            throw new IllegalArgumentException("No User found with that name");
-        }
-
-        return user;
-    }
 
     public User findUserByName(String name) {
 
@@ -48,6 +38,18 @@ public class UserService {
 
     public List<User> findAllUsers() {
         return this.userRepo.findAll();
+    }
+
+    public User findUserByAddress(String address) {
+        List<User> users = this.userRepo.findAll();
+
+        users.stream().map((anon) -> {
+            if(BCrypt.checkpw(address, anon.getAddress())) {
+                return anon;
+            }
+            return null;
+        });
+        return null;
     }
 
     public void createUser(String address) {

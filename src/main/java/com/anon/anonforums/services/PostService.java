@@ -1,7 +1,9 @@
 package com.anon.anonforums.services;
 
 import com.anon.anonforums.model.Post;
+import com.anon.anonforums.model.User;
 import com.anon.anonforums.repository.PostRepo;
+import com.anon.anonforums.repository.UserRepo;
 import io.github.cdimascio.dotenv.DotEnvException;
 import io.github.cdimascio.dotenv.Dotenv;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +18,7 @@ public class PostService {
     private final PostRepo postRepo;
 
     @Autowired
-    public PostService(PostRepo postRepo) {
+    public PostService(PostRepo postRepo, UserRepo userRepo) {
         this.postRepo = postRepo;
     }
 

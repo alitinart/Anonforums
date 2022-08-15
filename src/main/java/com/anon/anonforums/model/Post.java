@@ -23,4 +23,6 @@ public class Post {
     private String author;
 
     private List<Comment> comments;
+
+    public Post() {}
 }

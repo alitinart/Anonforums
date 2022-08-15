@@ -21,6 +21,11 @@ public class UserController {
         this.userService = userService;
     }
 
+    @GetMapping(path="/find/address")
+    public User findUserByAddress(HttpServletRequest request) {
+        return this.userService.findUserByAddress(this.userService.getIpAddress(request));
+    }
+
     @GetMapping(path="/find")
     public User findUserByName(@RequestParam("name") String name) {
         return this.userService.findUserByName(name);

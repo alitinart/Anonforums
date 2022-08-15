@@ -3,9 +3,11 @@ package com.anon.anonforums.controller;
 import com.anon.anonforums.model.Post;
 import com.anon.anonforums.services.PostService;
 import com.anon.anonforums.model.Response;
+import com.anon.anonforums.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -16,10 +18,9 @@ public class PostController {
     public final PostService postService;
 
     @Autowired
-    public PostController(PostService postService) {
+    public PostController(PostService postService, UserService userService) {
         this.postService = postService;
     }
-
 
     @PostMapping
     public Response createPost(@RequestBody Post post) {
