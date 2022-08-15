@@ -1,0 +1,13 @@
+.post_card {
+  margin: 2rem 0;
+  background-color: #101010;
+  padding: 1rem;
+  cursor: pointer;
+
+  &__title {
+    font-size: $font-medium;
+  }
+  &__author {
+    font-size: $font-small;
+  }
+}

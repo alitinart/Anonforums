@@ -1,0 +1,11 @@
+.post {
+  margin: 5rem;
+
+  &__title {
+    font-size: $font-large;
+  }
+  &__author {
+    font-size: 12px;
+    margin: 10px 0;
+  }
+}
