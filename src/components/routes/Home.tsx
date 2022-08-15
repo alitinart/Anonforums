@@ -18,9 +18,16 @@ export default function Home() {
     fetchPosts();
   }, []);
 
+  let today: any = new Date();
+  let dd = String(today.getDate()).padStart(2, "0");
+  let mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+  let yyyy = today.getFullYear();
+
+  today = dd + "/" + mm + "/" + yyyy;
+
   return (
     <div className="home">
-      <h1 className="home__date">8/15/2022</h1>
+      <h1 className="home__date">{today}</h1>
       <hr />
       <div className="home__latest_posts">
         {posts.length > 0 ? (
