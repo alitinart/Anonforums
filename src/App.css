@@ -20,12 +20,9 @@ a:hover {
   color: #535bf2;
 }
 
-body {
+* {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  padding: 0;
 }
 
 h1 {
@@ -40,7 +37,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #101010;
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -54,6 +51,22 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.create-post-icon {
+  background-color: #101010;
+  padding: 10px 11px;
+  border-radius: 100%;
+  font-size: 30px;
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: border-color 0.25s;
+}
+.create-post-icon:hover {
+  border-color: #646cff;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -65,4 +78,48 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+.navbar {
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0;
+  cursor: pointer;
+}
+.navbar__title {
+  font-size: 30px;
+  margin-left: 10px;
+}
+
+.home {
+  padding: 5rem;
+}
+.home__date {
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.home__no_posts {
+  font-size: 30px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.create_post {
+  padding: 5rem 10rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.create_post__title {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+.create_post__form__control {
+  padding: 5px 8px;
+  font-size: 20px;
+  margin-bottom: 10px;
+  width: 100%;
 }/*# sourceMappingURL=app.css.map */

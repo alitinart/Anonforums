@@ -1,0 +1,21 @@
+.create_post {
+  padding: 5rem 10rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__title {
+    font-size: $font-large;
+    margin-bottom: 20px;
+  }
+
+  &__form {
+    &__control {
+      padding: 5px 8px;
+      font-size: $font-normal;
+      margin-bottom: 10px;
+      width: 100%;
+    }
+  }
+}

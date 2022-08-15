@@ -1,0 +1,15 @@
+.home {
+  padding: 5rem;
+
+  &__date {
+    font-size: $font-normal;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  &__no_posts {
+    font-size: $font-medium;
+    text-align: center;
+    margin-top: 20px;
+  }
+}

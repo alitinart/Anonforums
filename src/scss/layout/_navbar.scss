@@ -1,0 +1,13 @@
+.navbar {
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0;
+  cursor: pointer;
+
+  &__title {
+    font-size: $font-medium;
+    margin-left: 10px;
+  }
+}
