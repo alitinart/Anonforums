@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class PostService {
@@ -39,7 +40,7 @@ public class PostService {
     }
 
     public void deletePostById(String id, String secretToken) {
-        if(secretToken != System.getenv("SECRET_TOKEN")) {
+        if(!Objects.equals(secretToken, System.getenv("SECRET_TOKEN"))) {
             throw new IllegalArgumentException("The Secret token provided is not correct");
         }
 
