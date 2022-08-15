@@ -18,7 +18,9 @@ export default function PostView() {
   return post ? (
     <div className="post">
       <h1 className="post__title">{post.title}</h1>
-      <p className="post__author">Author: {post.author}</p>
+      <p className="post__author">
+        Author: <strong>{post.author}</strong>
+      </p>
       <p className="post__description">{post.description}</p>
     </div>
   ) : (
