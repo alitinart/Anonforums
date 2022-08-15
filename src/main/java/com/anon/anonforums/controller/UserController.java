@@ -4,7 +4,6 @@ import com.anon.anonforums.model.Response;
 import com.anon.anonforums.model.User;
 import com.anon.anonforums.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/users")
+@CrossOrigin()
 public class UserController {
 
     private final UserService userService;
