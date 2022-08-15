@@ -43,13 +43,14 @@ public class UserService {
     public User findUserByAddress(String address) {
         List<User> users = this.userRepo.findAll();
 
-        users.stream().map((anon) -> {
+        AtomicReference<User> user = null;
+
+        users.forEach((anon) -> {
             if(BCrypt.checkpw(address, anon.getAddress())) {
-                return anon;
+                user.set(anon);
             }
-            return null;
         });
-        return null;
+        return user.get();
     }
 
     public void createUser(String address) {
