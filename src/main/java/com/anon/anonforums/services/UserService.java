@@ -8,9 +8,9 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.stream.Stream;
 
 @Service
 public class UserService {
@@ -43,14 +43,14 @@ public class UserService {
     public User findUserByAddress(String address) {
         List<User> users = this.userRepo.findAll();
 
-        AtomicReference<User> user = null;
+        Optional<User> optionalUser = users.stream().filter((anon) -> verifyAddress(address, anon.getAddress())).findFirst();
 
-        users.forEach((anon) -> {
-            if(BCrypt.checkpw(address, anon.getAddress())) {
-                user.set(anon);
-            }
-        });
-        return user.get();
+        if(!optionalUser.isPresent()) {
+            throw new NoSuchElementException("No user found");
+        }
+
+        User user = optionalUser.get();
+        return user;
     }
 
     public void createUser(String address) {
