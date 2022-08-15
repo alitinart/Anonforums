@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/api/v1/posts")
+@CrossOrigin()
 public class PostController {
 
     public final PostService postService;
