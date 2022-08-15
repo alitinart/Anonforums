@@ -1,5 +1,6 @@
 package com.anon.anonforums.services;
 
+import com.anon.anonforums.model.Comment;
 import com.anon.anonforums.model.Post;
 import com.anon.anonforums.model.User;
 import com.anon.anonforums.repository.PostRepo;
@@ -9,8 +10,7 @@ import io.github.cdimascio.dotenv.Dotenv;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Service
 public class PostService {
@@ -58,5 +58,45 @@ public class PostService {
         }
 
         this.postRepo.delete(post);
+    }
+
+    public void addComment(String id, Comment comment) {
+        Post post = this.postRepo.findPostById(id);
+
+        try {
+            post.getId();
+        } catch (Exception e) {
+            throw new NoSuchElementException("No post with that ID");
+        }
+
+
+        if(post.getComments() == null) {
+            post.setComments(new ArrayList<>());
+        }
+
+        List<Comment> comments = post.getComments();
+        comments.add(comment);
+
+        post.setComments(comments);
+
+        this.postRepo.save(post);
+    }
+
+//    Not DONE
+    public void addReply(int index, String id, Comment reply) {
+        Post post = this.postRepo.findPostById(id);
+
+        try {
+            post.getId();
+        } catch (Exception e) {
+            throw new NoSuchElementException("No post with that ID");
+        }
+
+        Comment comment = post.getComments().get(index);
+        if(comment.getReplies() == null) {
+            comment.setReplies(new ArrayList<>());
+        }
+
+        this.postRepo.save(post);
     }
 }

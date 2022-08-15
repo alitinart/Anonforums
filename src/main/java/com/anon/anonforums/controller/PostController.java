@@ -1,5 +1,6 @@
 package com.anon.anonforums.controller;
 
+import com.anon.anonforums.model.Comment;
 import com.anon.anonforums.model.Post;
 import com.anon.anonforums.services.PostService;
 import com.anon.anonforums.model.Response;
@@ -44,4 +45,9 @@ public class PostController {
         return new Response(false, "Post Deleted", 200);
     }
 
+    @PostMapping(path="/{id}/comment")
+    public Response commentOnPost(@PathVariable("id") String id, @RequestBody Comment comment) {
+        this.postService.addComment(id, comment);
+        return new Response(false, "Comment Posted", 200);
+    }
 }
